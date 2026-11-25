@@ -8,13 +8,13 @@ A one-image summary of 25 November 2026's world news, built as a newspaper front
 
 ## What's on the page
 
-- **3 leads** — the Houthis claiming the Ras Tanura refinery strike and the Riyadh tower hit, an Israeli strike killing Hamas's internal security chief in Gaza, and Ukrainian drones setting two Rosneft refineries ablaze — each with a CONFIRMED/REPORTED tag and a named source.
-- **10 pictured cards** — Asia's market tumble (Dow's first close above 50,000), the Hormuz tanker update, the Huawei verdict, Dell's record quarter, the Cartagena hostage rescue, the Australia–Solomons treaty, Shenzhou-24 docking, the Sudan drone strikes, the Pope on COP31, and US tariffs on 14 partners. Every picture is drawn to show its own story.
+- **3 leads** — the Houthis' claim of a Ras Tanura refinery strike and a Riyadh tower hit, the Israeli strike killing Hamas's internal security chief Mohammad Abuelouf in Gaza, and Ukrainian drones setting two Rosneft refineries ablaze — each with a CONFIRMED/REPORTED tag and a named source.
+- **10 pictured cards** — Asia's market tumble, the Hormuz tanker update, the Huawei verdict, Dell's record quarter, the Colombia hostages freed in Cartagena, the Australia–Solomons treaty, Shenzhou-24 with Pakistan's first astronaut, the Sudan strikes, COP31 ending without a deal, and US tariffs on 14 partners. Every picture is drawn to show its own story.
 - **Numbers strip** — Kospi -6.16%, Nikkei -2.78%, Dow 50,019, Brent $93.60, Dell revenue +103%, Huawei 10/12, hostages freed, 2 tankers, 145 drones downed, and 7,000 landmine dead.
 - **The day in UTC** — a 9-entry timeline from 00:10 to 15:00.
 - **Dotted world map** — a tall, dense dotted map with 13 numbered red pins marking the pictured stories.
 - **ALSO ON briefs** — 20 short briefs grouped by region, from the Middle East to markets.
-- **DATE CHECK box** — yesterday's big stories (the four tankers hit in Hormuz, Asia's Nvidia surge, Hamas chief Abu Nahel killed, the Zaporizhzhia strike, 350+ drones at Moscow, the Hanoi blast and Haftar in Ankara) kept out of today's news.
+- **DATE CHECK box** — yesterday's big stories (four tankers hit in Hormuz, Asia's Nvidia surge, Hamas chief Abu Nahel killed, the Zaporizhzhia strike, 350+ drones at Moscow, the Hanoi blast, and Haftar in Ankara) kept out of today's news.
 - **Sources footer** — Reuters, AP, Gulf News, OilPrice, Japan Times, WSJ, Dell, SEC filing, ABC News, The Statesman.
 
 ## How it is built
