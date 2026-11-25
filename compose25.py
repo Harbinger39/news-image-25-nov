@@ -241,9 +241,12 @@ def pic_hormuz(draw, x, y, w, h):
                    fill=(176, 40, 40))
     draw.rectangle([x + 158, y + h * 0.56, x + 184, y + h * 0.68],
                    fill=(220, 220, 216))
-    flame(draw, x + 18, y + h * 0.16, 26, h * 0.32)
-    flame(draw, x + 44, y + h * 0.24, 20, h * 0.24)
-    smoke(draw, x + 32, y + h * 0.06)
+    # Taller flames than the first pass: in entry.png they rise from the
+    # deck almost to the top of the sky, so both start near the top of
+    # the picture and end at the tanker deck (y + h * 0.46).
+    flame(draw, x + 14, y + h * 0.02, 34, h * 0.44)
+    flame(draw, x + 46, y + h * 0.08, 26, h * 0.38)
+    smoke(draw, x + 30, y + h * 0.04)
     draw.rectangle([x + 66, y + h * 0.30, x + 76, y + h * 0.46],
                    fill=(240, 240, 236))
     draw.rectangle([x + 118, y + h * 0.32, x + 128, y + h * 0.46],
@@ -270,15 +273,17 @@ def pic_huawei(draw, x, y, w, h):
                        fill=(226, 220, 204))
     draw.rectangle([x + 66, y + h - 14, x + w - 8, y + h - 8],
                    fill=(226, 220, 204))
-    stamp(draw, x + 70, y + h - 32, 96, 20, "GUILTY 10/12", -14)
+    # Wider stamp at larger type: in entry.png GUILTY 10/12 spans
+    # almost the full width of the courthouse, centred on the columns.
+    stamp(draw, x + 55, y + h - 32, 130, 20, "GUILTY 10/12", -14, size=17)
 
 
-def stamp(draw, x, y, w, h, s, angle=-14):
+def stamp(draw, x, y, w, h, s, angle=-14, size=12):
     """A red diagonal rubber stamp, drawn on its own layer and rotated."""
     layer = Image.new("RGBA", (w + 16, h + 16), (0, 0, 0, 0))
     ld = ImageDraw.Draw(layer)
     ld.rectangle([8, 8, w + 8, h + 8], outline=RED, width=3)
-    ld.text((12, 10), s, font=font(SANS_B, 12), fill=RED)
+    ld.text((12, 10), s, font=font(SANS_B, size), fill=RED)
     rot = layer.rotate(angle, expand=True, resample=Image.BICUBIC)
     draw._image.paste(rot, (int(x + w / 2 - rot.width / 2),
                             int(y + h / 2 - rot.height / 2)), rot)
@@ -395,8 +400,11 @@ def pic_sudan(draw, x, y, w, h):
             draw.rectangle([bx + 6 + wx * 14, y + h * 0.5 - bh + 30,
                             bx + 12 + wx * 14, y + h * 0.5 - bh + 38],
                            fill=(50, 38, 26))
-    flame(draw, x + 72, y + 6, 22, 20)
-    smoke(draw, x + 84, y + 2)
+    # Taller, narrower flame, set further left: in entry.png a slim
+    # flame rises from behind the second block's roof almost to the top
+    # of the sky, with its smoke cloud above it to the left.
+    flame(draw, x + 54, y + 2, 18, 24)
+    smoke(draw, x + 50, y + 0)
     drone_cross(draw, x + 168, y + 14)
 
 
@@ -409,7 +417,10 @@ def pic_cop31(draw, x, y, w, h):
         cx = x + 70 + i * 24
         draw.rectangle([cx, y + 44, cx + 8, y + h - 6], fill=(226, 210, 176))
     draw.ellipse([x + w - 34, y + 8, x + w - 10, y + 32], fill=FLAME)
-    stamp(draw, x + 6, y + h - 28, 104, 20, "COP31: NO DEAL", -12)
+    # Narrower stamp, shifted left: in entry.png COP31: NO DEAL
+    # starts at the card's left edge at the same height as here
+    # (red spans y596-631), with smaller type that fits inside the border.
+    stamp(draw, x + 1, y + h - 28, 84, 18, "COP31: NO DEAL", -12, size=9)
 
 
 def pic_tariffs(draw, x, y, w, h):
@@ -680,12 +691,17 @@ def main():
         text(draw, (x + 44, y), s, font(SANS, 11))
     rule(draw, 782, width=2)
 
-    # Map and ALSO ON briefs.
+    # Map and ALSO ON briefs. The subtitle sits between the heading and
+    # the map; the map and briefs start 12px lower than before, keeping
+    # the heading-to-map gap tight so everything still clears the
+    # date-check box at y=970.
     text(draw, (16, 790), "WHERE THE NEWS HAPPENED", font(SERIF_B, 18))
     text(draw, (352, 790), "ALSO ON", font(SERIF_B, 18))
-    draw_map(draw, 18, 812, cell=5.0)
-    draw_briefs(draw, 352, 812, 320, ALSO_LEFT, size=10)
-    draw_briefs(draw, 688, 812, 320, ALSO_RIGHT, size=10)
+    text(draw, (16, 810), "Pins mark the pictured stories",
+         font(SANS, 11), GREY)
+    draw_map(draw, 18, 824, cell=5.0)
+    draw_briefs(draw, 352, 824, 320, ALSO_LEFT, size=10)
+    draw_briefs(draw, 688, 824, 320, ALSO_RIGHT, size=10)
 
     # Date check box and sources footer. Two fixed lines, so the
     # "(Mon 24 Nov)" items are never split across lines.
